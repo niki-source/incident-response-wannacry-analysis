@@ -1,0 +1,1 @@
+# incident-response-wannacry-analysis
