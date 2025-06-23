@@ -96,8 +96,16 @@ While analyzing Event ID 1 (Process Creation) in the Sysmon logs, I observed mul
 
 **Goal:** Recover encrypted files, ransom note, and binaries from disk.
 
+In this phase, a simulated analysis of a WannaCry-infected disk image is presented. Although a real disk image (e.g., infected-disk.E01) was not used due to safety and ethical constraints, the following actions were documented based on publicly available reports and realistic incident response procedures:
+
+- Identified mock SHA256 hash of the WannaCry binary.
+- Recovered example ransom note (HTML).
+- Documented typical encrypted file extensions (.WNCRY).
+- Explained deleted MFT entry patterns linked to ransomware behavior.
+
+Artifacts are based on research and simulated scenarios. No real malware was executed.
+
 **Tools:** FTK Imager / Autopsy  
-**Artifact:** `infected-disk.E01`
 
 ###  Key Actions:
 - Located encrypted documents and HTML ransom note
@@ -105,12 +113,17 @@ While analyzing Event ID 1 (Process Creation) in the Sysmon logs, I observed mul
 - Retrieved deleted MFT entries showing malware creation path
 
 ###  Screenshots:
-![Ransom Note](docs/disk-analysis/ransom-note-html.png)  
-*Ransom note found in multiple user directories*
+### WannaCry Ransom Note
+![WannaCry Ransom Note](docs/disk-analysis/@Please_Read_Me@.png)
 
-![Malware File](docs/disk-analysis/malware-file-location.png)  
-*Wannacry binary located in Public folder*
+**Source:**  
+Microsoft Security Intelligence. (2017, May 12). [WannaCrypt ransomware worm targets out-of-date systems](https://www.microsoft.com/en-us/security/blog/2017/05/12/wannacrypt-ransomware-worm-targets-out-of-date-systems/). *Microsoft Security Blog*.
 
+### Encrypted Files Example
+![Encrypted files with .WNCRY extension](docs/disk-analysis/WNCRY%20encrypted%20files.png)
+
+**Source:**  
+Kamble, S. S., & Shinde, A. (2023). [A screenshot of the files appended with the .WNCRY extension](https://www.researchgate.net/figure/A-screenshot-of-the-files-appended-with-the-WNCRY-extension-allowed-us-to-conduct-a_fig4_370120251). *ResearchGate*.
 ---
 
 ##  Phase 4: Timeline & Indicators of Compromise (IOCs)
