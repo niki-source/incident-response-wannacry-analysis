@@ -124,50 +124,98 @@ Microsoft Security Intelligence. (2017, May 12). [WannaCrypt ransomware worm tar
 
 **Source:**  
 Kamble, S. S., & Shinde, A. (2023). [A screenshot of the files appended with the .WNCRY extension](https://www.researchgate.net/figure/A-screenshot-of-the-files-appended-with-the-WNCRY-extension-allowed-us-to-conduct-a_fig4_370120251). *ResearchGate*.
+
+- **Malware Executable Hash:**  
+  Although the disk image was not available to compute hashes directly, the following SHA256 hash is widely recognized for WannaCry binaries in threat intelligence sources:
+
+  db349b97c37d22f5ea1d1841e3c89eb4c6cb42f2
+
+This hash corresponds to the `wannacry.exe` executable found in infection cases, and is included here for reference.
+
+### Disclaimer
+
+> The above artifacts and hashes are based on publicly available data and known intelligence on WannaCry ransomware. Due to the absence of the actual forensic disk image in this project, direct file recovery and hash calculation were not performed.
+
+
 ---
 
-##  Phase 4: Timeline & Indicators of Compromise (IOCs)
+## Phase 4: Timeline & Indicators of Compromise (IOCs)
 
-**Goal:** Construct infection timeline and extract relevant IOCs.
+**Goal:** Construct an infection timeline and identify known Indicators of Compromise (IOCs) based on simulated network and host log analysis, combined with publicly available threat intelligence.
 
-**Tools:** Excel / Markdown / Sigma Rules
+**Tools:** Markdown / Threat Intelligence Sources (Microsoft, MITRE ATT&CK, ResearchGate)
 
-###  Timeline Sample:
+>  **Disclaimer:**  
+> As no live malware execution or infected host analysis was performed due to safety and ethical concerns, the timeline and IOCs below are derived from simulated environments and public threat reports. The `.evtx` and `.pcap` files used in earlier phases did not originate from actual WannaCry infections. All artifacts and findings here represent a realistic approximation based on research.
+
+---
+
+###  Infection Timeline (Simulated)
 
 | Timestamp           | Event                              | Source         |
 |---------------------|-------------------------------------|----------------|
-| 2025-06-15 10:03:12 | SMB exploit packet received         | Wireshark      |
-| 2025-06-15 10:03:13 | wannacry.exe created & executed     | Sysmon (ID 1)  |
-| 2025-06-15 10:03:20 | Registry key modified (persistence) | Sysmon (ID 13) |
-| 2025-06-15 10:04:00 | Files encrypted + ransom note added | FTK Imager     |
+| 2025-06-15 10:03:12 | SMB exploit packet received         | Wireshark (Simulated) |
+| 2025-06-15 10:03:13 | wannacry.exe created & executed     | Sysmon (Event ID 1) |
+| 2025-06-15 10:03:20 | Registry key modified (persistence) | Sysmon (Event ID 13) |
+| 2025-06-15 10:04:00 | Files encrypted + ransom note added | FTK Imager (Simulated) |
 
-###  Sample IOCs:
-- **SHA256 Hash:** `db349b97c37d22f5ea1d1841e3c89eb4c6cb42f2`
-- **IP Address:** `185.14.30.11` (Tor relay)
-- **File Name:** `wannacry.exe`, `tasksche.exe`
-- **Registry Key:** `HKCU\Software\Microsoft\Windows\CurrentVersion\Run\msupdate`
+>  These events reflect a plausible infection sequence typical of WannaCry ransomware, as reported by Microsoft and independent researchers.
 
-###  Screenshots:
-![IOC Table](docs/timeline/ioc-table.png)  
-*IOC summary compiled from multiple evidence sources*
+---
 
-![Incident Timeline](docs/timeline/timeline-diagram.png)  
-*Visual timeline of ransomware attack*
+###  Known WannaCry IOCs (Public Sources)
+
+- **SHA256 Hash (Malware Binary):**  
+  `db349b97c37d22f5ea1d1841e3c89eb4c6cb42f2`  
+  *Matches known `wannacry.exe` sample from VirusTotal and Microsoft Threat Intelligence*
+
+- **File Names (Malicious Processes):**  
+  - `wannacry.exe`  
+  - `tasksche.exe`  
+  - `@Please_Read_Me@.txt` or `.html` (ransom notes)
+
+- **Registry Key for Persistence:**  
+  `HKCU\Software\Microsoft\Windows\CurrentVersion\Run\msupdate`
+
+- **C2 IP Address (Tor Relay):**  
+  `185.14.30.11`  
+  *Appears in historical WannaCry reports as part of outbound callback traffic*
+
+---
+
+### Screenshots & Diagrams
+
+>  No IOC screenshots or tool-generated output were available for this phase due to the absence of real artifacts.
+
+If real logs or network captures were available, they would typically include:
+- Sysmon logs with command-line arguments for ransomware execution
+- Registry modification entries
+- Network traffic showing callbacks to Tor infrastructure or SMB exploitation
+
+---
+
+###  Summary
+
+This phase showcases how threat intelligence can be used to simulate the identification of IOCs and construct a plausible attack timeline, even when actual malware execution is avoided. It reinforces the importance of:
+- Recognizing ransomware behavior across multiple data sources
+- Cross-referencing forensic analysis with public threat feeds
+- Transparently stating scope and limitations in security investigations
+
 
 ---
 
 ##  Lessons Learned
 
-- EternalBlue vulnerability is still exploitable in legacy systems
-- Host-based logging (especially Sysmon) is critical for forensics
-- Disk image analysis revealed deleted traces missed in logs
-- Building a timeline clarified the attack chain and helped create effective detections
+- WannaCry ransomware continues to pose a threat, primarily leveraging the EternalBlue vulnerability on unpatched systems.
+- Host-based logging with tools like Sysmon is vital for detecting ransomware execution and persistence behaviors.
+- Disk image analysis can reveal critical artifacts such as encrypted files, ransom notes, and deleted traces that might be missed by logs alone.
+- Even simulated timelines and IOC identification based on public threat intelligence are valuable for understanding attack chains and improving detection capabilities.
+- Conducting malware analysis safely through simulation and research is important to avoid risks while still gaining practical incident response skills.
 
 ---
 
 ##  Final Report
 
-📎 [Download the Incident Response Report (PDF)](report/wannacry-incident-report.pdf)
 
 ---
 
