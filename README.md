@@ -16,7 +16,6 @@ This project documents the analysis of a simulated WannaCry ransomware infection
 │   ├── network-analysis/  
 │   ├── log-analysis/  
 │   ├── disk-analysis/  
-│   └── timeline/  
 ├── artifacts/  
 │   ├── pcap/  
 │   └── disk-images/  
