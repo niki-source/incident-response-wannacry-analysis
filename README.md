@@ -3,12 +3,20 @@
 
 This project documents the analysis of a simulated WannaCry ransomware infection, focused on identifying Indicators of Compromise (IOCs) using network traffic, host-based logs, and disk forensics.
 
->  Estimated Time: 15–20 hours  
->  Deliverables: Incident Report + Log & Network Analysis + Screenshots + PCAP
+Frameworks Used in Analysis
+NIST SP 800-53: Guided security controls and response procedures.
+
+Security Intelligence Cycle: Structured data collection, analysis, and reporting of IOCs.
+
+Lockheed Martin Cyber Kill Chain: Mapped WannaCry stages from reconnaissance to impact to identify detection and prevention points.
+
+MITRE ATT&CK: Classified attacker techniques like SMB exploitation, command-line execution, persistence, and ransomware impact.
+
+Diamond Model: Analyzed relationships between adversary, infrastructure, victim, and attack vectors for a holistic understanding.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 ├── README.md  
 ├── report/  
 │   └── wannacry-incident-report.pdf  
