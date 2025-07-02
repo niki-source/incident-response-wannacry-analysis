@@ -19,8 +19,7 @@ This project documents the analysis of a simulated WannaCry ransomware infection
 ├── artifacts/  
 │   ├── pcap/  
 │   └── disk-images/  
-├── src/  
-└── scripts/
+
 
 
 
