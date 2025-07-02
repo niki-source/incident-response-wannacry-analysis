@@ -213,7 +213,7 @@ This phase showcases how threat intelligence can be used to simulate the identif
 ---
 
 ##  Final Report
-
+[`report`](./report)
 
 ---
 
